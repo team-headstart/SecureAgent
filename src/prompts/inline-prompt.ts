@@ -28,19 +28,15 @@ export const INLINE_FIX_FUNCTION = {
     type: "object",
     properties: {
       comment: {
-        type: "string",
         description: "Why this change improves the code",
       },
       code: {
-        type: "string",
         description: "Modified Code Snippet",
       },
       lineStart: {
-        type: "number",
         description: "Starting Line Number",
       },
       lineEnd: {
-        type: "number",
         description: "Ending Line Number",
       },
     },
@@ -72,7 +68,6 @@ export const getInlineFixPrompt = (
     suggestion.toString()
   ).replace("{FILE}", assignFullLineNumers(fileContents));
   return [
-    { role: "system", content: INLINE_FIX_PROMPT },
     { role: "user", content: userMessage },
   ];
 };
