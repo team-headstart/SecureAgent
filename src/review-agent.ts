@@ -47,8 +47,6 @@ export const reviewFiles = async (
 
 const filterFile = (file: PRFile) => {
   const extensionsToIgnore = new Set<string>([
-    "pdf",
-    "png",
     "jpg",
     "jpeg",
     "gif",
@@ -551,9 +549,6 @@ export const processPullRequest = async (
           const file = files.find(
             (file) => file.filename === suggestion.filename
           );
-          if (file == null) {
-            return null;
-          }
           return generateInlineComments(suggestion, file);
         })
       );
