@@ -55,12 +55,6 @@ async function handlePullRequestOpened({
       url: payload.repository.html_url,
     });
     const files = await getChangesPerFile(payload);
-    const review: Review = await processPullRequest(
-      octokit,
-      payload,
-      files,
-      true
-    );
     await applyReview({ octokit, payload, review });
     console.log("Review Submitted");
   } catch (exc) {
@@ -74,10 +68,6 @@ reviewApp.webhooks.on("pull_request.opened", handlePullRequestOpened);
 
 const port = process.env.PORT || 3000;
 const reviewWebhook = `/api/review`;
-
-const reviewMiddleware = createNodeMiddleware(reviewApp.webhooks, {
-  path: "/api/review",
-});
 
 const server = http.createServer((req, res) => {
   if (req.url === reviewWebhook) {
