@@ -13,7 +13,6 @@ export const INLINE_FIX_PROMPT = `In this task, you are provided with a code sug
   </suggestion>
 \`\`\`
 
-{file}
 
 The 'comment' field contains specific code modification instructions. Based on these instructions, you're required to formulate a precise code fix. Bear in mind that the fix must include only the lines between the starting line (linestart) and ending line (lineend) where the changes are applied.
 
@@ -26,18 +25,7 @@ export const INLINE_FIX_FUNCTION = {
   description: "The code fix to address the suggestion and rectify the issue",
   parameters: {
     type: "object",
-    properties: {
-      comment: {
-        type: "string",
-        description: "Why this change improves the code",
-      },
-      code: {
-        type: "string",
-        description: "Modified Code Snippet",
-      },
-      lineStart: {
-        type: "number",
-        description: "Starting Line Number",
+  : "Starting Line Number",
       },
       lineEnd: {
         type: "number",
