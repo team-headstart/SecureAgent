@@ -38,8 +38,6 @@ export interface Builders {
 
 export interface PatchInfo {
   hunks: {
-    oldStart: number;
-    oldLines: number;
     newStart: number;
     newLines: number;
     lines: string[];
@@ -84,10 +82,6 @@ export const sleep = async (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const processGitFilepath = (filepath: string) => {
-  // Remove the leading '/' if it exists
-  return filepath.startsWith("/") ? filepath.slice(1) : filepath;
-};
 
 export interface EnclosingContext {
   enclosingContext: Node | null;
